@@ -83,13 +83,13 @@ interface Person {
   address: string;
 }
 
-type PersonKeys = keyof Person; // "name" | "age" | "address"
+type PersonKeys = keyof Person; 
 
 let key: PersonKeys;
-key = "name";    // valid
-key = "age";     // valid
-key = "address"; // valid
-key = "email";   // Error: Type '"email"' is not assignable to type 'PersonKeys'.
+key = "name";    
+key = "age";     
+key = "address"; 
+key = "email";   
 ```
 
 ### Explanation:

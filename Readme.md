@@ -68,3 +68,33 @@ Use `type` when:
 Just remember:
 > Interfaces are best for structure, and types are best for flexibility.
 
+
+
+
+
+In TypeScript, the `keyof` keyword is used to obtain the keys of a given type or object. It essentially extracts the union of all the property names (keys) of the type or object. This is especially useful for creating types that work with specific object keys dynamically, enhancing type safety.
+
+### Example:
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+  address: string;
+}
+
+type PersonKeys = keyof Person; // "name" | "age" | "address"
+
+let key: PersonKeys;
+key = "name";    // valid
+key = "age";     // valid
+key = "address"; // valid
+key = "email";   // Error: Type '"email"' is not assignable to type 'PersonKeys'.
+```
+
+### Explanation:
+
+* `keyof Person` creates a type that represents the union of the string literal types `"name" | "age" | "address"`.
+* The `key` variable can only accept one of these keys (`"name"`, `"age"`, or `"address"`), ensuring type safety when accessing properties of the `Person` object.
+
+This can also be useful in functions or scenarios where you want to enforce the use of valid keys in a dynamic manner, rather than hardcoding strings.
